@@ -30,7 +30,7 @@ The section below will provide an overview of ZenCrepes main screens.
 When opening-up ZenCrepes for the first time, a short configuration wizard is presented, it provides general explanations and allows users to select repositories to load data from.
 
 <p align="center">
-  <img alt="Issues View" title="Issues view" src="./docs/zencrepes-wizard.png" width="640" />
+  <img alt="Issues View" title="Issues view" src="./images/zencrepes-wizard.png" width="640" />
 </p>
 
 ZenCrepes can fetch repositories affiliated with the user, but it can also fetch data from public organizations and repositories, as long as they are configured to allow such action. Some that do are JetBrains, Microsoft (individual repositories, for example, cntk), elastic...
@@ -79,7 +79,7 @@ During that stage, ZenCrepes is also going to query each of the individual eleme
 The objective of the `Issues` view is to quickly filter down issues using faceted search and see metrics resulting from a particular set of issues.
 
 <p align="center">
-  <img alt="Issues View" title="Issues view" src="./docs/zencrepes-issues.png" width="640" />
+  <img alt="Issues View" title="Issues view" src="./images/zencrepes-issues.png" width="640" />
 </p>
 
 Notice the switch `Issues Count` vs `Story Points` at the top of the screen. Story Points is the default, but the system will automatically fall back to Issues Count if no points were found. It's inaccurate but could still give relevant insights.
@@ -89,7 +89,7 @@ Notice the switch `Issues Count` vs `Story Points` at the top of the screen. Sto
 The objective of the `Sprints` view is to provide close-up insights into a particular sprint while supporting the team during scrum meetings. This view is only going to be relevant for teams using milestones to track sprints.
 
 <p align="center">
-  <img alt="Issues View" title="Sprints view" src="./docs/zencrepes-sprints.png" width="640" />
+  <img alt="Issues View" title="Sprints view" src="./images/zencrepes-sprints.png" width="640" />
 </p>
 
 This screen contains the following:
@@ -116,7 +116,7 @@ The objective of the `Projects` view is to provide agile metrics for teams opera
 The objective of the `Labels` view is to simplify management of labels across organizations and repository. Easily push a single label to 10s of repositories, easily apply a consistent color for one label across multiple repositories, ...
 
 <p align="center">
-  <img alt="Issues View" title="Labels view" src="./docs/zencrepes-labels.png" width="640" />
+  <img alt="Issues View" title="Labels view" src="./images/zencrepes-labels.png" width="640" />
 </p>
 
 Modifications are bound to the query being applied, for example, if you select repo A & B, modifying or creating a label, will be bound to those 2 repositories only.
@@ -126,7 +126,7 @@ Modifications are bound to the query being applied, for example, if you select r
 An almost identical approach than Labels but for GitHub milestones.
 
 <p align="center">
-  <img alt="Issues View" title="Milestones view" src="./docs/zencrepes-milestones.png" width="640" />
+  <img alt="Issues View" title="Milestones view" src="./images/zencrepes-milestones.png" width="640" />
 </p>
 
 ### Settings Screen
@@ -134,7 +134,7 @@ An almost identical approach than Labels but for GitHub milestones.
 The settings view allows users to select which repository to load data from. It shows the same screens than the configuration wizard.
 
 <p align="center">
-  <img alt="Issues View" title="Settings view" src="./docs/zencrepes-settings.png" width="640" />
+  <img alt="Issues View" title="Settings view" src="./images/zencrepes-settings.png" width="640" />
 </p>
 
 ## Contribute
@@ -152,7 +152,7 @@ But first, you need to be able to run ZenCrepes in your local dev environment. T
 In GitHub, create a fork of ZenCrepes' repository into your own profile.
 
 <p align="center">
-  <img alt="Fork ZenCrepes repository" title="Fork ZenCrepes repository" src="./docs/zencrepes-dev-fork.png" />
+  <img alt="Fork ZenCrepes repository" title="Fork ZenCrepes repository" src="./images/zencrepes-dev-fork.png" />
 </p>
 
 Once done, clone the forked repository locally (replace the URL below with your fork).
@@ -181,19 +181,19 @@ Next, you need to register your app in GitHub to be able to log-in during your t
 Open-up GitHub, and navigate to your `settings`.
 
 <p align="center">
-  <img alt="Issues View" title="GitHub Settings" src="./docs/zencrepes-dev-github-settings.png" />
+  <img alt="Issues View" title="GitHub Settings" src="./images/zencrepes-dev-github-settings.png" />
 </p>
 
 Go to `Developer Settings` and click on `New OAuth App`.
 
 <p align="center">
-  <img alt="GitHub Developer Settings" title="GitHub Developer Settings" src="./docs/zencrepes-dev-github-developersettings.png" width="640" />
+  <img alt="GitHub Developer Settings" title="GitHub Developer Settings" src="./images/zencrepes-dev-github-developersettings.png" width="640" />
 </p>
 
 Pick a name to your app and register it with the following URLs:
 
 <p align="center">
-  <img alt="Register OAuth app" title="Register OAuth app" src="./docs/zencrepes-dev-github-oauth.png" />
+  <img alt="Register OAuth app" title="Register OAuth app" src="./images/zencrepes-dev-github-oauth.png" />
 </p>
 
 You will then be redirected to a screen containing your Client ID and Client Secret.
