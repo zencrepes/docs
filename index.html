@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>ZenCrepes Docs</title>
+    <link rel="stylesheet" href="https://unpkg.com/docute@4/dist/docute.css" />
+  </head>
+  <body>
+    <div id="docute"></div>
+    <script src="https://unpkg.com/docute@4/dist/docute.js"></script>
+    <script>
+      new Docute({
+        target: '#docute',
+        title: 'ZenCrepes',
+        editLinkBase: 'https://github.com/zencrepes/docs/tree/master/',
+        editLinkText: 'Edit this page on GitHub',
+        router: {
+          mode: 'history',
+        },
+        detectSystemDarkTheme: false,
+        darkThemeToggler: true,
+        sourcePath: '/',
+        nav: [
+          {
+            title: 'Home',
+            link: '/',
+          },
+          {
+            title: 'GitHub',
+            link: 'https://github.com/zencrepes/',
+          },
+          {
+            title: 'Issues',
+            link: 'https://github.com/zencrepes/zencrepes/issues',
+          },
+          {
+            title: 'Serverless',
+            link: 'https://zencrepes.io',
+          },
+        ],
+        sidebar: [
+          {
+            title: 'Introduction',
+            link: '/',
+          },
+          {
+            title: 'Serverless',
+            children: [
+              {
+                title: 'Get Started',
+                link: '/serverless',
+              },
+            ],
+          },
+          {
+            title: 'Install',
+            children: [
+              {
+                title: 'Get Started',
+                link: '/install',
+              },
+            ],
+          },
+          {
+            title: 'Use',
+            children: [
+              {
+                title: 'Get Started',
+                link: '/use',
+              },
+            ],
+          },
+          {
+            title: 'Develop',
+            children: [
+              {
+                title: 'Get Started',
+                link: '/develop',
+              },
+            ],
+          },
+        ],
+      });
+    </script>
+  </body>
+</html>
