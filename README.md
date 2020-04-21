@@ -16,10 +16,18 @@ The general philosophy of the tool is to keep a lean logic and to remain as fact
 
 For example, ZenCrepes can display metrics on open issues in closed milestones, but will not report on issues that missed a milestone. The first one is a factual element about the data, the second one is the human interpretation of a state.
 
+ZenCrepes is being progressively updated to include more data sources (Jira, CircleCI, ...), although the core functionality will remain centered around GitHub.
+
 ## Server vs. Serverless
 
 ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the documentation), but this created some UX challenges/frustration that could solved by traking a more complex server-side approach.
 
 The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the version requiring backend services to be running.
 
-A section of this documentation is dedicated to the serverless version, except otherwise specified, the rest of this documentation does not refer to the serverless version.
+A section of this documentation is dedicated to the serverless version, except otherwise specified, the rest of this documentation does not refer to version requiring backend services.
+
+## Reach-out
+
+I'd be more than happy to get feedback and external contributions, just submit a PR with your requested changes. Feel free to reach out on [slack](http://slack.overture.bio/), ZenCrepes has a dedicated channel on `#app_zencrepes`.
+
+Overture gracefully provides the VM instance hosting dev & prod and the slack channel. ZenCrepes is not an Overture project.
