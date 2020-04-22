@@ -23,7 +23,7 @@ A ZenCrepes deployment is made of the following services:
 
 All services are meant to be running in Docker, corresponding containers are available on [Docker Hub](https://hub.docker.com/orgs/zencrepes/repositories).
 
-### Zindexer
+## Zindexer
 
 Zindexer is a CLI tool created to fetch data, in bulk, from many sources (it plays gently with GitHub API and follow rate limits). Data is then pushed to an Elasticsearch cluster.
 
@@ -35,7 +35,7 @@ A couple of things worth noting:
 - The node ID (an Issue, a project, a milestone) is ported over from the data source to the elasticsearch index, which prevents duplicated data. For example if `zqueue` receives an update for a node that was previously imported by `zindexer`, this node will be updated.
 - Whenever possible (depending of the data source API characteristics), nodes are fetched sorted by last update date (descending), when the system fetch an issue that is already present and has the same late update date, it knows it can stop fetching further nodes.
 
-### Zqueue
+## Zqueue
 
 Zqueue hasn't been implemented yet (at the time of writing this doc), but its logic is simple enough. It will receive an event from GitHub containing a node ID and will place this node ID in a queue.
 
@@ -43,7 +43,7 @@ While the queue is being processed, it will fetch nodes using the same queries u
 
 This should provide pretty quick data update as events are happening.
 
-### Elasticsearch
+## Elasticsearch
 
 Elasticsearch is the datastore for the project, two options are available for indices:
 
@@ -52,14 +52,14 @@ Elasticsearch is the datastore for the project, two options are available for in
 
 Cluster sizing is not going to be discussed in this documentation, there are many resources available online covering this topic.
 
-### Zapi
+## Zapi
 
 Zapi is a GraphQL api providing an interface between the Elasticsearch datastore and our UI. It supports querying through an abstraction language called [SQON](https://arranger.readthedocs.io/en/latest/src/sqon.html) and supports pagination, aggregations and various ZenCrepes-specific operations.
 
-### Zui
+## Zui
 
 Zui is ZenCrepes front-end, nothing particular to mention about it. It interacts primariraly with Zapi, and will (not implemented yet) in some occurences communicate directly with the data source (GitHub in particular) for bulk operations (if authentication/authorization is set-up properly).
 
-### Keycloak
+## Keycloak
 
 [Keycloak](https://www.keycloak.org/) is an identify and access management solution, it is used to control access to the data. Keycloak can be disabled through environment variables, although this usecase is only recommended during development.
