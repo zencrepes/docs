@@ -1,6 +1,6 @@
-# Introduction to ZenCrepes
+# ZenCrepes
 
-ZenCrepes is an Agile analytics and management made easy !
+Agile analytics and management made easy !
 
 ## What is ZenCrepes
 
