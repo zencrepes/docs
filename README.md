@@ -22,7 +22,7 @@ ZenCrepes is being progressively updated to include more data sources (Jira, Cir
 
 ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the documentation), but this created some UX challenges/frustration that could solved by traking a more complex server-side approach.
 
-The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the version requiring backend services to be running.
+The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the version requiring backend services.
 
 A section of this documentation is dedicated to the serverless version, except otherwise specified, the rest of this documentation does not refer to version requiring backend services.
 

@@ -1,5 +1,3 @@
-# Get started
-
 This section of the document will contain a set of instructions to quickly spin-up the stack. Those instructions have been tested on MacOS and assume you already have common development tools installed (namely Docker, node, yarn).
 
 It will also focus primarily on GitHub for datasource.
