@@ -1,7 +1,3 @@
-# Overview
-
-Learn more about how ZenCrepes runs and how to deploy it.
-
 ## Architecture
 
 ZenCrepes architecture is fairly straight forward, it fetches data from remote sources, pushes it to a data store and display everything with a UI.
