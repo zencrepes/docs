@@ -7,6 +7,10 @@ But this approach has two major drawbacks:
 - ZenCrepes cannot register to GitHub hooks, therefore cannot be `informed` about updates. Instead, it needs to regularly pull for changes.
 - Since the database (Minimongo) is entirely client-side and bound to the browser's capabilities, the more data there is, the slower ZenCrepes is going to be. A few thousands of issues should be perfectly fine though.
 
+<Note type="tip">
+The serverless version was the first implementation of ZenCrepes, expect its future development to be slighly slower than the server-side version due to the two abovementioned drawbacks.
+</Note>
+
 ## Try-it!
 
 Just go to https://zencrepes.io and log-in. It's all client-side, so not a chance we'll see your data.
