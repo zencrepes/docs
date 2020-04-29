@@ -29,7 +29,7 @@ Give your token a name, and select the following scopes:
 
 Those scopes should be sufficient to get started, click on `Generate token` and keep this token safe (don't share it!).
 
-## Clone the repository and start zencrepes
+## Clone the repo
 
 ```bash
 mkdir ~/zencrepes

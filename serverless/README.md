@@ -1,8 +1,14 @@
+# ZenCrepes Serverless
+
 <ImageZoom 
   src="./images/zencrepes-issues.png" 
   :border="true" 
   width="800"
 />
+
+<Note type="tip">
+This section refers to ZenCrepes as "Serverless", this is not entirely true. For GitHub authentication to be possible, a callback URL is required (by GitHub). URL used to redirect the authenticated user to the application. So a small service is hosted by the application to handle the authentication flow. But once authenticated, all of the API calls are made directly between the browser and GitHub. 
+</Note>
 
 ## How it works
 
