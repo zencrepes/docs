@@ -2,6 +2,12 @@
 
 Agile analytics and management made easy !
 
+<ImageZoom 
+  src="./images/zencrepes-logo.png" 
+  :border="true" 
+  width="640"
+/>
+
 ## What is ZenCrepes
 
 ZenCrepes has initially been created by a PM (excuse the poor programming) to facilitate project management for teams operating solely over GitHub issues, and across multiple organizations & repositories.

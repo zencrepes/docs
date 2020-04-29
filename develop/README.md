@@ -21,7 +21,7 @@ Pull and run an Elasticsearch instance
 
 ```sh-session
 > docker pull docker.elastic.co/elasticsearch/elasticsearch:7.5.0
-> docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.5.0
+> docker run -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.6.2
 ```
 
 Verify you instance is running properly by opening up a web browser and visiting `http://127.0.0.1:9200`, you should see a JSON payload.
@@ -40,7 +40,7 @@ Pull and run a Kibana instance (note the use of the container ID `f0b5b04a2c24`)
 
 ```sh-session
 > docker pull docker.elastic.co/kibana/kibana:7.5.0
-> docker run --link f0b5b04a2c24:elasticsearch -p 5601:5601 docker.elastic.co/kibana/kibana:7.5.0
+> docker run --link f0b5b04a2c24:elasticsearch -p 5601:5601 docker.elastic.co/kibana/kibana:7.6.2
 ```
 
 At this point, you should have a Kibana instance running, open-up your web browser and visit `http://127.0.0.1:5601`, click on `Management` on the left side, then `Index Management`. You should see "No Indices to show" since we haven't loaded any data yet.

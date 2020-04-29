@@ -1,3 +1,9 @@
+<ImageZoom 
+  src="./images/zencrepes-issues.png" 
+  :border="true" 
+  width="800"
+/>
+
 ## How it works
 
 ZenCrepes is client-side and stateless. The main concept around using ZenCrepes is not to introduce any dependencies to third-party services. Users have the option to operate directly with GitHub's UI or to use ZenCrepes. It also means that ZenCrepes cannot see any user data, once authenticated, all data exchanges are directly made between the user's browser and GitHub.
