@@ -4,8 +4,9 @@ Agile analytics and management made easy !
 
 <ImageZoom 
   src="./images/zencrepes-logo.png" 
-  :border="true" 
-  width="640"
+  :border="false" 
+  alt="ZenCrepes logo"
+  width="320"
 />
 
 ## What is ZenCrepes
