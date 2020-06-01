@@ -13,6 +13,15 @@ If you're curious to understand the thought process that went into creating ZenC
 
 # Datasets
 
-In ZenCrepes, each dataset is treated independently and tightly relate to the way the data is being organized (or provided through API) by the various service providers.
+In ZenCrepes, each dataset is treated independently and although common elements will be present (such as list of elements), each dataset will be presented in a way relevant to the data itself always keeping a focus on [ZenCrepes three primary objectives](http://docs.zencrepes.io/#what-is-zencrepes).
 
-Although common elements will be present (such as list of elements), each dataset will be presented in a way relevant to the data itself always keeping a focus on [ZenCrepes three primary objectives](http://docs.zencrepes.io/#what-is-zencrepes).
+# User Interface
+
+# Query-centric
+
+ZenCrepes is query-centric, clicking on data elements or interacting with the backend is always done by means of a query.
+
+Operating on the query is usually done through:
+
+- Facets to progressively filter-down content
+- Clicking on a chart element

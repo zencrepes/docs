@@ -1,3 +1,5 @@
+# Try ZenCrepes self-hosted
+
 This section of the documentation contains instructions to get started quickly using `docker` and `docker-compose`. This doesn't aim at providing instructions to install a production-grade environment, but to take the shortest path to a running ZenCrepes environment.
 
 This documentation has been tested on Mac, instructions should be identical on GNU/Linux.
