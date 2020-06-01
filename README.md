@@ -27,11 +27,15 @@ ZenCrepes is being progressively updated to include more data sources (Jira, Cir
 
 ## Self-hosted vs. Serverless
 
-ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the [documentation](http://docs.zencrepes.io/serverless/)), but this created some UX challenges related to data refresh that could only solved by traking a more complex server-side approach.
+ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the [documentation](http://docs.zencrepes.io/serverless/)), but this created some UX challenges related to data refresh, and the only to solve those was to take a more complex server-side approach.
 
 The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the version requiring backend services.
 
 A [section of this documentation](http://docs.zencrepes.io/serverless/) is dedicated to the serverless version, except otherwise specified, the rest of this documentation does not refer to version requiring backend services.
+
+## Supported Datasets
+
+ZenCrepes currently supports the following datasets.
 
 | GitHub                | Circle CI             | Jira   |
 | --------------------- | --------------------- | ------ |
@@ -49,14 +53,16 @@ Adding more datasources is pretty straightforward as long as an API is available
 
 ## Inner-workings
 
-At a high level, ZenCrepes can be divided in two, a data fetcher (called Zindexer) and a presentation layer (UI & API) making this data available through an opinionated UI. Zindexer and the presentation layer (a UI called `zui` and an api called `zapi`) are fully separated from eachother (you don't need one to run the other).
+At a high level, ZenCrepes can be divided in two major parts, a data fetcher (called Zindexer) and a presentation layer (UI & API) making this data available through an opinionated UI.
 
-When running ZenCrepes, the tool fetches requested dataset from configured sources (a source can be a repository, a jira project, a circleci token), and either loads the fulle dataset or newly updated nodes (depending of the source API's capabilities). Zindexer also aims at playing nicely with any rate limit practices in place.
+Zindexer and the presentation layer (a UI called `zui` and an api called `zapi`) are fully separated from eachother (you don't need one to run the other).
 
-Zindexer dumps the data it fetched into Elasticsearch, and you could also dive right into the data from Kibana without running zui & zapi. Those two services (zui & zapi) provide an opinionated user experience tailored to a limited number of datasets. While Kibana would support many more data models.
+When running ZenCrepes, the tool fetches requested dataset from configured sources (a source can be a repository, a jira project, a circleci token), and either loads the full dataset or the recently updated nodes (depending of the source API's capabilities). Zindexer also aims at playing nicely with any rate limit practices in place.
+
+Zindexer dumps the data it fetched into Elasticsearch, and you could dive right into the data from Kibana without running zui & zapi. ZenCrepes presentation layer (zui & zapi) provides an opinionated user experience tailored to a limited number of datasets, while Kibana would support many more data models.
 
 ## Reach-out
 
-I'd be more than happy to hear feedback and receive external contributions, just submit a PR with your requested changes. Feel free to reach out on [slack](http://slack.overture.bio/), ZenCrepes has a dedicated channel on `#app_zencrepes`.
+I'd be happy to hear feedback and receive external contributions, just submit a PR with your requested changes. Feel free to reach out on [slack](http://slack.overture.bio/), ZenCrepes has a dedicated channel on `#app_zencrepes`.
 
 Overture gracefully provides the VM instance hosting dev & prod and the slack channel. ZenCrepes is not an Overture project.
