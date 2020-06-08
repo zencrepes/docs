@@ -5,7 +5,7 @@ sidebar_label: Introduction
 ---
 
 <h1 align="center">
-  <a href="https://zencrepes.io"><img src="./images/zencrepes-logo.svg" alt="ZenCrepes" width="300"/></a>
+  <a href="https://zencrepes.io"><img src="/img/zencrepes-logo.svg" alt="ZenCrepes" width="300"/></a>
 </h1>
 
 ZenCrepes has initially been created by a PM (excuse the poor programming) to facilitate management of teams operating over GitHub issues across multiple organizations & repositories.

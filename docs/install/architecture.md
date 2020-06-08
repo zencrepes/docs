@@ -15,7 +15,7 @@ A ZenCrepes deployment is made of the following services:
 - **zui**: The user interface
 - **Keycloak**: An authentication/authorization provider (optional)
 
-![](./images/zencrepes-architecture.png)
+![](/img/zencrepes-architecture.png)
 
 All services are meant to be running in Docker, corresponding containers are available on [Docker Hub](https://hub.docker.com/orgs/zencrepes/repositories).
 

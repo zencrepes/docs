@@ -12,11 +12,11 @@ This documentation has been tested on Mac, instructions should be identical on G
 
 Log-in your profile in GitHub, and go to your settings.
 
-![](./images/zencrepes-dev-github-settings.png)
+![](/img/zencrepes-dev-github-settings.png)
 
 In the left-side menu, click on `Developer settings` at the bottom.
 
-![](./images/github-dev-settings.png)
+![](/img/images/github-dev-settings.png)
 
 Then select `Personal access tokens` and `Generate new token`.
 
