@@ -116,6 +116,8 @@ docker-compose pull
 docker-compose up -d
 ```
 
+ZenCrepes is now available at `http://localhost:8080` but hasn't been configured yet ! At that point you should be able to access it, but the left-side menu will be mostly empty.
+
 ## Enable repositories
 
 To facilite discovery (and limit dependencies to external tools), zindexer (which is a CLI tool) has been dockerized, and a small (hugly?) [hack](https://github.com/zencrepes/zindexer/blob/master/startup.sh) was done to ensure this process doesn't shut down after initial execution, keeping the Docker container alive. This will allow you to interact with the command tool without needing to have node and npm running on your machine.
