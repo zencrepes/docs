@@ -6,7 +6,7 @@ sidebar_label: Architecture
 
 ZenCrepes architecture is fairly straight forward, it fetches data from remote sources, pushes it to a data store and display everything with a UI.
 
-A ZenCrepes deployment is made of the following services:
+ZenCrepes's stack is made of the following services:
 
 - **zindexer**: A bulk data fetcher
 - **zqueue**: A event driven data fetcher (to be implemented)
@@ -21,7 +21,7 @@ All services are meant to be running in Docker, corresponding containers are ava
 
 ## Zindexer
 
-Zindexer is a CLI tool created to fetch data, in bulk, from many sources (it plays gently with GitHub API and follow rate limits). Data is then pushed to an Elasticsearch cluster.
+Zindexer is a CLI tool created to fetch data, in bulk, from many sources (it plays gently with GitHub API by following rate limits). Data is then pushed to an Elasticsearch cluster.
 
 For those using ZenCrepes primariraly with GitHub, zindexer is only really useful during initial setup, it will provision the Elasticsearch cluster with any historical data. Following the initial fetch, `zqueue` would take over and push nodes updates whenever they happen.
 For the other data sources, in the absence of web-hooks, zindxer can be cron'd to fetch additional data at regular interval.

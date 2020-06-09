@@ -12,7 +12,7 @@ ZenCrepes has initially been created by a PM (excuse the poor programming) to fa
 
 It focuses on three primary objectives:
 
-- **Report and search**: Quickly find relevant issues based on selected criteria (faceted search). For example `List open defects assigned to John or Max in rock or paper repos` or `Display the team's velocity on paper and scissor repos`.
+- **Explore and search**: Quickly find relevant data elements based on selected criteria (faceted search). For example `List open defects assigned to John or Max in rock or paper repos`, `Display the team's velocity on paper and scissor repos`, `List issues with the Bug label that have been opened for more than 2 weeks`.
 - **Scrum operation**: Identify the amount of work left in a sprint, estimate completion based on past velocity, review repartition of open issues (by repo, by labels, by assignees).
 - **Consistency**: Ensure labels and milestones are consistent across multiple organizations and repositories, clean-up when necessary.
 
@@ -24,11 +24,11 @@ ZenCrepes is being progressively updated to include more data sources (Jira, Cir
 
 ## Self-hosted vs. Serverless
 
-ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the [documentation](http://docs.zencrepes.io/serverless/)), but this created some UX challenges related to data refresh, and the only to solve those was to take a more complex server-side approach.
+ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the [documentation](http://docs.zencrepes.io/serverless/)), but this created some UX challenges related to data fetch & refresh. The only to solve those was to take a more complex server-side (and self-hosted) approach.
 
-The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the version requiring backend services.
+The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the self-hosted version.
 
-A [section of this documentation](http://docs.zencrepes.io/serverless/) is dedicated to the serverless version, except otherwise specified, the rest of this documentation does not refer to version requiring backend services.
+A [section of this documentation](http://docs.zencrepes.io/serverless/) is dedicated to the serverless version, except otherwise specified, the rest of this documentation does not refer to self-hosted.
 
 ## Supported Datasets
 
@@ -57,6 +57,10 @@ Zindexer and the presentation layer (a UI called `zui` and an api called `zapi`)
 When running ZenCrepes, the tool fetches requested dataset from configured sources (a source can be a repository, a jira project, a circleci token), and either loads the full dataset or the recently updated nodes (depending of the source API's capabilities). Zindexer also aims at playing nicely with any rate limit practices in place.
 
 Zindexer dumps the data it fetched into Elasticsearch, and you could dive right into the data from Kibana without running zui & zapi. ZenCrepes presentation layer (zui & zapi) provides an opinionated user experience tailored to a limited number of datasets, while Kibana would support many more data models.
+
+## Not a ticketing management system
+
+ZenCrepes is not a ticketing management system (and will never be), it's a set of tools aimed at providing an (opinionated but factual) analytics view over a large number of data elements commonly used by Agile teams.
 
 ## Reach-out
 

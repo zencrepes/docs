@@ -66,7 +66,7 @@ PS: `/tmp/zencrepes-data` is where the configuration file and cache data will be
 
 ## Configure ZenCrepes
 
-The next thing you need to do is to configure ZenCrepes, a template configuration can be obtained easily by starting either `zindexer`, `zapi` or `zqueue`. At startup they will look for a configuration file, and if they can't find any, will generate a default one and terminate themselves.
+The next thing you need to do is to configure ZenCrepes, a template configuration can be obtained easily by starting either `zindexer`, `zapi` or `zqueue`. At startup those tools will look for a configuration file, and if they can't find any, will generate a default one and terminate themselves.
 
 ```bash
 docker run \

@@ -1,8 +1,8 @@
 module.exports = {
   someSidebar: {
-    'Getting Started': ['introduction', 'try'],
+    'Getting Started': ['introduction', 'try', 'faq'],
     Serverless: ['serverless'],
-    Install: ['install/architecture'],
+    Install: ['install/architecture', 'install/configuration'],
     GitHub: [
       'github/overview',
       'github/issues',

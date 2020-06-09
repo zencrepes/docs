@@ -12,7 +12,7 @@ This section refers to ZenCrepes as "Serverless", this is not entirely true. For
 
 ## How it works
 
-ZenCrepes is client-side and stateless. The main concept around using ZenCrepes is not to introduce any dependencies to third-party services. Users have the option to operate directly with GitHub's UI or to use ZenCrepes. It also means that ZenCrepes cannot see any user data, once authenticated, all data exchanges are directly made between the user's browser and GitHub.
+ZenCrepes erverless is client-side and stateless. The main concept around using ZenCrepes is not to introduce any dependencies to third-party services. Users have the option to operate directly with GitHub's UI or to use ZenCrepes. It also means that ZenCrepes cannot see any user data, once authenticated, all data exchanges are directly made between the user's browser and GitHub.
 
 But this approach has two major drawbacks:
 
