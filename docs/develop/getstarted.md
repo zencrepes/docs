@@ -37,7 +37,7 @@ Get the container id of the Elasticsearch instance (for Kibana)
 ```bash
 docker ps
 CONTAINER ID        IMAGE                                                 COMMAND                  CREATED             STATUS              PORTS                                            NAMES
-f0b5b04a2c24        docker.elastic.co/elasticsearch/elasticsearch:7.5.0   "/usr/local/bin/dock…"   3 minutes ago       Up 3 minutes        0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp   hungry_gagarin
+f0b5b04a2c24        docker.elastic.co/elasticsearch/elasticsearch:7.7.0   "/usr/local/bin/dock…"   3 minutes ago       Up 3 minutes        0.0.0.0:9200->9200/tcp, 0.0.0.0:9300->9300/tcp   hungry_gagarin
 ```
 
 In this example, the container ID for our Elasticsearch instance is: `f0b5b04a2c24`, we'll use this number to attach the kibana to.

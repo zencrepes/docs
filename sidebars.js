@@ -2,7 +2,11 @@ module.exports = {
   someSidebar: {
     'Getting Started': ['introduction', 'try', 'faq'],
     Serverless: ['serverless'],
-    Install: ['install/architecture', 'install/configuration'],
+    Install: [
+      'install/architecture',
+      'install/configuration',
+      'install/authentication',
+    ],
     GitHub: [
       'github/overview',
       'github/issues',
