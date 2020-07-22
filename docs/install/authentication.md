@@ -36,7 +36,7 @@ We will then create a client by clicking (within the zencrepes realm) on `Client
 
 - ** Client ID**: Use `zencrepes`, this name has a different purpose than the realm, but it doesn't hurt using the same value
 - ** Client Protocol**: Select `openid-connect`
-- ** Root URL**: The URL you're using to access ZenCrepes (for example `http://localhost:3000` if using the provided docker-compose.yml)
+- ** Root URL**: The URL you're using to access ZenCrepes: `http://localhost:3000` (for the purpose of this guide).
 
 ### Identity Provider
 
@@ -44,7 +44,7 @@ Although ZenCrepes would allow you to use any Identify Provider (or none if you 
 
 #### Register a Client in GitHub
 
-In GitHub, create a new OAuth App, specifying the following:
+In GitHub, create a new OAuth App (either under an Organization's settings or under your own settings), specifying the following:
 
 - ** Application Name **: The desired name of your application
 - ** Hompage URL **: The Keycloak URL of the realm, for dev we're using: `http://localhost:8080/realms/ZenCrepes`
@@ -54,13 +54,13 @@ GitHub will automatically generate a Client ID and Client Secret, those will be 
 
 #### Create an Identify Provider
 
-In Keycloak, create an identify provider:
+In Keycloak, create a GitHub identify provider by clicking on "Identity Providers", "Add provider ..." and selecting `GitHub`. Enter the following settings:
 
 - ** Client ID**: The Client ID you just got from GitHub
 - ** Client Secret**: The Client Secret you just got from GitHub
 - ** Default Scopes**: Use the following `user:email, read:org, repo`, they will be needed if we want user to start batch modifying content
-- ** Store Tokents**: ON
-- ** Store Toeksn Readable**: This parameter must be turned `ON` to allow authenticated users to retrieve their token and make direct calls to GitHub. Note that is users connected before this setting was turned on, those users will need to be deleted from Keycloak.
+- ** Store Tokens**: ON
+- ** Store Tokens Readable**: This parameter must be turned `ON` to allow authenticated users to retrieve their token and make direct calls to GitHub. Note that is users connected before this setting was turned on, those users will need to be deleted from Keycloak.
 
 Leave the rest by default.
 
@@ -86,7 +86,7 @@ Try logging-in with your credentials, if successful, you should see your GitHub 
 
 ZenCrepes ZAPI supports passing Keycloak details through environment variable, use the following:
 
-- ** KEYCLOAK_DISABLED** : Whether Keycloak should be disabled or not, set this to false
+- ** KEYCLOAK_DISABLED ** : Whether Keycloak should be disabled or not, set this to false
 - ** KEYCLOAK_AUTH_SERVER_URL **: URL of the Keycloak server, for us: `http://localhost:8080/auth/`
 - ** KEYCLOAK_AUDIENCE **: Leave empty (default) except if you specified it in Keycloak.
 - ** KEYCLOAK_REALM **: Your Realm, for us: `ZenCrepes`
@@ -137,7 +137,7 @@ From that point on, any users assigned to this group will also receive the `zenc
 
 Go back to ZAPI environment variables configuration and update environment variables.
 
-- ** KEYCLOAK_ROLE** : The role to check for in the token, for us: `zencrepes-data`
+- ** KEYCLOAK_ROLE ** : The role to check for in the token, for us: `zencrepes-data`
 
 Restart the API with this new variable.
 

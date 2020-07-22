@@ -95,9 +95,9 @@ Open-up `/tmp/zencrepes-data/config.yml`, and modify the following elements:
 
 ```yml
 elasticsearch:
-  host: 'http://elasticsearch:9200'
+  host: 'http://zc_elasticsearch:9200'
 redis:
-  host: 'redis://redis:6379'
+  host: 'redis://zc_redis:6379'
 github:
   username: YOUR_GITHUB_USERNAME
   token: THE_TOKEN_YOU_GOT_AT_THE_BEGINNING_OF_THIS_DOC
@@ -116,7 +116,7 @@ docker-compose pull
 docker-compose up -d
 ```
 
-ZenCrepes is now available at `http://localhost:8080` but hasn't been configured yet ! At that point you should be able to access it, but the left-side menu will be mostly empty.
+ZenCrepes is now available at `http://localhost:3000` but hasn't been configured yet ! At that point you should be able to access it, but the left-side menu will be mostly empty.
 
 ## Enable repositories
 
@@ -127,7 +127,7 @@ The first step is to identify repositories to load data from (those are called `
 Run the following command:
 
 ```bash
-docker exec -it zindexer zindexer sources --help
+docker exec -it zc_zindexer zindexer sources --help
 ```
 
 This gives view a quick view at the available commands, which ultimately define what data will be fetched.
@@ -139,7 +139,7 @@ Yes, there needs to be two `zindexer` in the command above, the first one is the
 To get started quickly, with as much data as possible, run the following command:
 
 ```bash
-docker exec -it zindexer zindexer sources -a -g affiliated
+docker exec -it zc_zindexer zindexer sources -a -g affiliated
 ```
 
 This will enable all repositories from all GitHub organizations affiliated with your account. But be careful, it could represent a lot of data !
@@ -149,22 +149,22 @@ This will enable all repositories from all GitHub organizations affiliated with 
 ZenCrepes can fetch various different datasets from GitHub, you can get a list of the available datasets by running the following command
 
 ```bash
-docker exec -it zindexer zindexer github --help
+docker exec -it zc_zindexer zindexer github --help
 ```
 
 You can then fetch the data of your choice (or all of it) using the commands below:
 
 ```bash
-docker exec -it zindexer zindexer github:issues
-docker exec -it zindexer zindexer github:labels
-docker exec -it zindexer zindexer github:milestones
-docker exec -it zindexer zindexer github:projects
-docker exec -it zindexer zindexer github:pullrequests
-docker exec -it zindexer zindexer github:releases
-docker exec -it zindexer zindexer github:repos
-docker exec -it zindexer zindexer github:stargazers
-docker exec -it zindexer zindexer github:vulnerabilities
-docker exec -it zindexer zindexer github:watchers
+docker exec -it zc_zindexer zindexer github:issues
+docker exec -it zc_zindexer zindexer github:labels
+docker exec -it zc_zindexer zindexer github:milestones
+docker exec -it zc_zindexer zindexer github:projects
+docker exec -it zc_zindexer zindexer github:pullrequests
+docker exec -it zc_zindexer zindexer github:releases
+docker exec -it zc_zindexer zindexer github:repos
+docker exec -it zc_zindexer zindexer github:stargazers
+docker exec -it zc_zindexer zindexer github:vulnerabilities
+docker exec -it zc_zindexer zindexer github:watchers
 ```
 
 Data is fetched per repository, once a repository has been fully loaded its data becomes available in ZenCrepes. So if you are fetching a lot of data, you don't need to wait until the end to start playing with the tool.
@@ -188,3 +188,36 @@ If you re-run the command later on, `zindexer` will only fetch newly updated PRs
 On the long-run, `zindexer` will only be useful for the initial data fetching (historical data). another tool `zqueue` (not built yet), will take care of fetching data based on events it will receive from GitHub. `zindexer` is only needed to fetch data, it doesn't need to be running constantly.
 
 That's it, happy discovery !
+
+## Using Keycloak
+
+ZenCrepes can be configured to use Keycloak to provide an authorization layer, this is required if you want to use any of the features directly interacting with GitHub (for example bulk modifying labels).
+
+To start the ZenCrepes docker environment with Keycloak enabled, simply run:
+
+```bash
+docker-compose -f docker-compose-keycloak.yml up -d
+```
+
+And follow configuration instructions available in the [dedicated section on Authentication & Authorization](https://docs.zencrepes.io/docs/install/authentication), not running the container manually since it is provided by `docker-compose-keycloak.yml`.
+
+Keycloak configuration is a bit peculiar as it needs to be reachable from both your webbrowser (for the redirection from GitHub) and directly from the API, through the `KEYCLOAK_AUTH_SERVER_URL` parameter.
+
+And if those two are not using the same URL, you are going to see the following error `{"message":"jwt issuer invalid. expected: http://zc_keycloak:8080/auth/realms/ZenCrepes"}` when trying to access the API.
+
+The easy solution for this is to edit your local `/etc/hosts` file, to create an alias for zc_keycloak.
+
+```bash
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1       localhost
+127.0.0.1       zc_keycloak
+```
+
+Then edit your github OAuth configuration (which you did when following the Authz configuration above), replacing `localhost` with `zc_keycloak` in both `Homepage URL` and `Authorization callback URL`.
+
+In production, Keycloak would be hosted properly and have its own URL, which will make this configuration tweak not needed.
