@@ -24,7 +24,7 @@ ZenCrepes is being progressively updated to include more data sources (Jira, Cir
 
 ## Self-hosted vs. Serverless
 
-ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the [documentation](http://docs.zencrepes.io/serverless/)), but this created some UX challenges related to data fetch & refresh. The only to solve those was to take a more complex server-side (and self-hosted) approach.
+ZenCrepes started its life as a "serverless" application (although this term is not entirely correct, see the [documentation](http://docs.zencrepes.io/serverless/)), but this created some UX challenges related to data fetch & refresh. The only way to address those was to take a more complex server-side (and self-hosted) approach.
 
 The plan is to keep the Serverless version operational (accessible at [ZenCrepes.io](https://zencrepes.io)) as a quick way to discover what the tool can do, while most effort going forward will be put on the self-hosted version.
 
@@ -54,7 +54,7 @@ At a high level, ZenCrepes can be divided in two major parts, a data fetcher (ca
 
 Zindexer and the presentation layer (a UI called `zui` and an api called `zapi`) are fully separated from eachother (you don't need one to run the other).
 
-When running ZenCrepes, the tool fetches requested dataset from configured sources (a source can be a repository, a jira project, a circleci token), and either loads the full dataset or the recently updated nodes (depending of the source API's capabilities). Zindexer also aims at playing nicely with any rate limit practices in place.
+When running ZenCrepes, the tool fetches requested dataset from configured sources (a source can be a GitHub repository, a jira project, a circleci token), and either loads the full dataset or the recently updated nodes (depending of the source API's capabilities). Zindexer also aims at playing nicely with any rate limit practices in place.
 
 Zindexer dumps the data it fetched into Elasticsearch, and you could dive right into the data from Kibana without running zui & zapi. ZenCrepes presentation layer (zui & zapi) provides an opinionated user experience tailored to a limited number of datasets, while Kibana would support many more data models.
 

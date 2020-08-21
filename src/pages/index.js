@@ -5,10 +5,12 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
+import clsx from 'clsx';
 
 const features = [
   {
     title: <>Explore and Search</>,
+    imageUrl: 'img/zencrepes-explore.png',
     description: (
       <>
         Quickly find relevant elements based on selected facets, across multiple
@@ -18,6 +20,7 @@ const features = [
   },
   {
     title: <>Scrum Operation</>,
+    imageUrl: 'img/zencrepes-deliver.png',
     description: (
       <>
         Identify the amount of work left in a sprint, estimate completion based
@@ -28,6 +31,7 @@ const features = [
   },
   {
     title: <>Consistency</>,
+    imageUrl: 'img/zencrepes-list.png',
     description: (
       <>
         Ensure labels and milestones are consistent across multiple
@@ -43,7 +47,7 @@ function Feature({ imageUrl, title, description }) {
     <div className={classnames('col col--4', styles.feature)}>
       {imgUrl && (
         <div className='text--center'>
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+          <img src={imgUrl} alt={title} />
         </div>
       )}
       <h3>{title}</h3>
@@ -78,6 +82,12 @@ function Home() {
         </div>
       </header>
       <main>
+        <div className={clsx(styles.announcement, styles.announcementDark)}>
+          <div className={styles.announcementInner}>
+            Operating solely with providers data, ZenCrepes provides a
+            high-level analytics platform on top of your team's data.
+          </div>
+        </div>
         {features && features.length > 0 && (
           <section className={styles.features}>
             <div className='container'>

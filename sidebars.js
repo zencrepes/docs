@@ -9,6 +9,7 @@ module.exports = {
     ],
     GitHub: [
       'github/overview',
+      'github/import',
       'github/issues',
       'github/labels',
       'github/milestones',

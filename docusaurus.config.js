@@ -13,7 +13,7 @@ module.exports = {
         alt: 'ZenCrepes Logo',
         src: 'img/zencrepes.svg',
       },
-      links: [
+      items: [
         {
           to: 'docs/',
           activeBasePath: 'docs',

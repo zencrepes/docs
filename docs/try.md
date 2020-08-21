@@ -173,7 +173,7 @@ Data is fetched per repository, once a repository has been fully loaded its data
 
 Authentication/Authorization is not enabled, so pay attention to where you are spinning up this environment.
 
-Don't run zindexer multiple times in parallel. If you do that you will hit GitHub rate throttling. On top of that, it's in everyone best interest to play gently with GitHub API.
+Don't run zindexer multiple times in parallel with the same token (or username for that matter). If you do that you will hit GitHub rate throttling. On top of that, it's in everyone best interest to play gently with GitHub API.
 
 GitHub will issue 5000 tokens per 1-hour period, which should be plenty for most discovery situations. You can monitor token consumption while `zindexer` is running, by watching for the following messages:
 
