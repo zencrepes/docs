@@ -9,7 +9,7 @@ Authentication & Authorization is handled through [Keycloak](https://www.keycloa
 Instructions on how to get started with Keycloak are available on [their website](https://www.keycloak.org/getting-started/getting-started-docker).
 
 :::caution
-Although this section of the documentation will present instructions on how to get started quickly with Keycloak, it should NOT be considered a best practice or recommended configuration. It remains your responsibilty to understand the data your are exposing, how this data should be protected and what mechanisms are being implemented to ensure rightful access. Use the below (and ZenCrepes in general), at your own risks).
+Although this section of the documentation will present instructions on how to get started quickly with Keycloak, it should NOT be considered a best practice or recommended configuration. It remains your responsibilty to understand the data your are exposing, how this data should be protected and what mechanisms are being implemented to ensure rightful access. Use the below (and ZenCrepes in general), at your own risks.
 :::
 
 ## Deploy and Configure Keycloak

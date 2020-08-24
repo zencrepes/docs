@@ -84,8 +84,9 @@ function Home() {
       <main>
         <div className={clsx(styles.announcement, styles.announcementDark)}>
           <div className={styles.announcementInner}>
-            Operating solely with providers data, ZenCrepes provides a
-            high-level analytics platform on top of your team's data.
+            ZenCrepes fetches content from various sources (GitHub, CircleCI,
+            Jira) and provides a high-level analytics platform on top of your
+            team's data.
           </div>
         </div>
         {features && features.length > 0 && (
