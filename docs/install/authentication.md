@@ -103,13 +103,17 @@ The Authorization layer is handled through role assignment.
 
 ### More about Authorization
 
+ZenCrepes supports two modes for authorization, the first one through group membership, the second one through checking the user email.
+
+### Authorization through Group membership
+
 Authentication & Authorization is handled at ZAPI level through decoding a JWT, during authentication, users assigned to a pre-defined role will automatically see their secured token populated with this extra role.
 
 If the role is missing from the JWT token, access to the data will be denied.
 
 Roles can also be mapped to user groups, which is the approach that will be documented here. A group will be created and a role will be mapped to this group. By adding users to the groups, users will inherit the role, which will then be verified by the API.
 
-### Create a Group
+#### Create a Group
 
 The first step is to create a group of authorized ZenCrepes users.
 
@@ -117,7 +121,7 @@ Go back to Keycloak admin, select your Realm (`ZenCrepes`), click on "Groups" in
 
 For the purpose of this guide we'll call this group `zencrepes-users`.
 
-### Create a Role
+#### Create a Role
 
 Within your Realm (`ZenCrepes`), click on "Roles" in the "Configure" section. Then click on "Add Role".
 
@@ -125,7 +129,7 @@ We'll call this role `zencrepes-data`.
 
 ![](/img/keycloak-create-role.png)
 
-### Attach the role to the group
+#### Attach the role to the group
 
 Go back to the group you created earlier (`zencrepes-users`), click on "Edit", select the "Role Mappings" tab and add `zencrepes-data` to the "Assigned Roles.
 
@@ -133,7 +137,7 @@ Go back to the group you created earlier (`zencrepes-users`), click on "Edit", s
 
 From that point on, any users assigned to this group will also receive the `zencrepes-data` role, but we didn't configure any yet (on purpose).
 
-### Update ZAPI configuration
+#### Update ZAPI configuration
 
 Go back to ZAPI environment variables configuration and update environment variables.
 
@@ -141,18 +145,69 @@ Go back to ZAPI environment variables configuration and update environment varia
 
 Restart the API with this new variable.
 
-### Verify configuration
+#### Verify configuration
 
 Try logging in ZenCrepes, you'll get a denied request and will be redirected back to the login page.
 
-### Add user to group
+#### Add user to group
 
 Go back to Keycloak admin, select your Realm (`ZenCrepes`), click on "Users" in the "Manage" section and click on "View all users".
 
 Select your user, click on "Edit", go the the "Groups" tab and add the user to group `zencrepes-users`.
 
-### Verify configuration
+#### Verify configuration
 
 Log-out and log back in.
 
 Your user should now be authorized to access ZenCrepes data, for all subsequent logins you will simply have to add users to the `zencrepes-users` group for them to be allowed to access ZenCrepes data
+
+### Authorization through email pattern
+
+The second mode consists in verifying the user's email address towards a pre-configured pattern.
+
+#### Disable account login
+
+Keycloak provides an optional UI to let users edit their profile, this includes updating their email address, which is a feature we want to make sure is disabled.
+
+You can verify if this feature is disabled or enabled by accessing http://localhost:8080/auth/realms/ZenCrepes/account/ after a successful authentication to ZenCrepes.
+
+You should see a `Page not found` message if the feature is disabled.
+
+Otherwise, connect to Keycloak administration:
+
+- select your Realm (ZenCrepes)
+- click on the `Clients` section
+- select the `account` Client ID
+- move the `Enabled` cursor to `OFF`
+- save
+
+You can try accessing http://localhost:8080/auth/realms/ZenCrepes/account/ again.
+
+#### Edit Zencrepes configuration file.
+
+Open up your `config.yml` file and update the following section:
+
+```yml
+auth:
+  domainCheck:
+    enabled: true
+    WARNING: >-
+      If enabled, for each call received by the API, the user email will be
+      verified aginst that list of domains. User will be granted if the user
+      email includes the domain string. Do not forget to disable Account login 
+      in your Realm configuration.
+    domains:
+      - '@mydomain.com'
+```
+
+In every call ZAPI will receive, it will check the user's email contained in the JWT token and check if the email includes part of the domains.
+
+For example `joe@mydomain.com` will be granted access. But if you were to just add `joe` in the domain section, it would grant access to `joe@test.com` but also `alex@joedomain.com`, so just make sure you configure those fields properly.
+
+You can specify multiple "domains", ZAPI will pass if it matches at least one.
+
+PS: The warning message is just there for the administrator while editing the config file.
+
+#### Restart ZAPI
+
+ZAPI's configuration is only read at startup, so simply restart your container to read the updated configuration file.
