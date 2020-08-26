@@ -87,7 +87,7 @@ $ node dist/main.js
 error Command failed with exit code 1.
 ```
 
-A default configuration file (config.yml) is now located in `/tmp/zencrepes-data`.
+A default configuration file (config.yml) is now located in `/tmp/zencrepes-data`. Note that the path defailed in the logs above (`/root/zencrepes/config.yml`) refers to the container's filesystem, so use your local mount point (`/tmp/zencrepes-data/config.yml`).
 
 ## Configure ZenCrepes
 
@@ -105,7 +105,7 @@ github:
     secret: THE_SECRET_CONFIGURED_IN_THE_WEBHOOK_SECTION
 ```
 
-For the elasticsearch host, use `http://elasticsearch:9200` as this corresponds to the setup with docker-compose, same applies for redis. Leave all the other settings as-is.
+For the elasticsearch host, use `http://zc_elasticsearch:9200` as this corresponds to the setup with docker-compose, same applies for redis. Leave all the other settings as-is.
 
 ## Start the environment
 

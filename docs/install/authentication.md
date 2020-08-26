@@ -4,7 +4,7 @@ title: Authentication & Authorization
 sidebar_label: Authentication
 ---
 
-Authentication & Authorization is handled through [Keycloak](https://www.keycloak.org/), which can be enabled or disabled through environment variables. Keycloak can be used to authenticate and authorize users accessing data through the API (don't expose your Elasticsearch instance !).
+Authentication & Authorization is handled through [Keycloak](https://www.keycloak.org/), which can be enabled or disabled in ZenCrepes through environment variables. Keycloak can be used to authenticate and authorize users accessing data through the API (don't expose your Elasticsearch instance !).
 
 Instructions on how to get started with Keycloak are available on [their website](https://www.keycloak.org/getting-started/getting-started-docker).
 
@@ -51,6 +51,10 @@ In GitHub, create a new OAuth App (either under an Organization's settings or un
 - ** Application callback URL **: `http://localhost:8080/auth/realms/ZenCrepes/broker/github/endpoint`
 
 GitHub will automatically generate a Client ID and Client Secret, those will be necessary in the next step.
+
+:::caution
+If you are using Keycloak and the correponsing ZenCrepes docker-compose file, and plan to play with it locally, please read the bottom of the `Getting Started > Try It !` section of this documentation, regarding the use of localhost.
+:::
 
 #### Create an Identify Provider
 
