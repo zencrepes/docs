@@ -7,20 +7,33 @@ module.exports = {
       'install/configuration',
       'install/authentication',
     ],
-    GitHub: [
-      'github/overview',
-      'github/import',
-      'github/issues',
-      'github/labels',
-      'github/milestones',
-      'github/projects',
-      'github/prs',
-      'github/releases',
-      'github/vulnerabilities',
-      'github/watchers',
+    Use: ['use/overview'],
+    Datasets: [
+      {
+        GitHub: [
+          'github/overview',
+          'github/issues',
+          'github/repositories',
+          'github/labels',
+          'github/milestones',
+          'github/projects',
+          'github/prs',
+          'github/releases',
+          'github/vulnerabilities',
+          'github/watchers',
+          'github/import',
+        ],
+      },
+      {
+        CircleCI: [
+          'circleci/envvars',
+          'circleci/pipelines',
+          'circleci/insights',
+        ],
+      },
+      { Jira: ['jira/issues'] },
     ],
-    CircleCI: ['circleci/envvars', 'circleci/pipelines', 'circleci/insights'],
-    Jira: ['jira/issues'],
+
     Develop: ['develop/getstarted'],
   },
 };

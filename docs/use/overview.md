@@ -15,17 +15,19 @@ If you're curious to understand the thought process that went into creating ZenC
 - [Introducing ZenCrepes - Agile analytics across GitHub orgs & repos](https://softeng.oicr.on.ca/francois_gerthoffert/2019/03/03/ZenCrepes-GitHub-Agile-Analytics-made-easy/)
 - [Data-driven Agile is the answer to all our problems!](https://medium.com/jahia-techblog/data-driven-agile-is-the-answer-to-all-our-problems-6151ff095aec)
 
-## Datasets
-
-In ZenCrepes, each dataset is treated independently and although common elements will be present (such as list of elements), each dataset will be presented in a way relevant to the data itself always keeping a focus on [ZenCrepes three primary objectives](http://docs.zencrepes.io/#what-is-zencrepes).
-
 ## User Interface
 
-## Query-centric
+<p align="center">
+  <img alt="Issues View" title="Issues view" src="/img/zencrepes-interface.png" width="640" />
+</p>
 
-ZenCrepes is query-centric, clicking on data elements or interacting with the backend is always done by means of a query.
+Each dataset is presented in a very similar fashion and contain:
 
-Operating on the query is usually done through:
+- (1): Facets to easily click to filter the dataset and show number of elements for each of the aggregations
+- (2): A query, displaying the current filters being applied. Queries can be edited and/or saved for later use
+- (3): Navigation tabs to dive in the data through different angles
+- (4): The actual data window.
 
-- Facets to progressively filter-down content
-- Clicking on a chart element
+### Click to filter
+
+Most elements should be clickable and let the user narrow the dataset.

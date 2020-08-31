@@ -7,6 +7,11 @@ module.exports = {
   organizationName: 'zencrepes', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   themeConfig: {
+    announcementBar: {
+      id: 'supportus',
+      content:
+        'ZenCrepes is fully <a target="_blank" rel="noopener noreferrer" href="https://www.apache.org/licenses/LICENSE-2.0">Open-Source</a> and needs your help, join us on <a target="_blank" rel="noopener noreferrer" href="https://github.com/zencrepes/zencrepes/issues">GitHub</a>!',
+    },
     navbar: {
       title: 'ZenCrepes',
       logo: {
@@ -21,7 +26,7 @@ module.exports = {
           position: 'left',
         },
         {
-          href: 'https://github.com/zencrepes/zencrepes',
+          href: 'https://github.com/zencrepes',
           label: 'GitHub',
           position: 'right',
         },

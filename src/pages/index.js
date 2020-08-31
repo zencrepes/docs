@@ -24,8 +24,8 @@ const features = [
     description: (
       <>
         Identify the amount of work left in a sprint, estimate completion based
-        on past velocity, review repartition of open issues (by repo, by labels,
-        by assignees).
+        on past velocity, review repartition of open issues (by repo, label,
+        assignee...).
       </>
     ),
   },
@@ -36,6 +36,34 @@ const features = [
       <>
         Ensure labels and milestones are consistent across multiple
         organizations and repositories, clean-up when necessary.
+      </>
+    ),
+  },
+  {
+    title: <>Bulk updates with Safeguards</>,
+    imageUrl: 'img/zencrepes-staging.png',
+    description: (
+      <>
+        Pushing changes in bulk can be scary, ZenCrepes provides a staging area
+        highlighting changes about to be made and require explicit user
+        confirmation prior to submission.
+      </>
+    ),
+  },
+  {
+    title: <>Query based</>,
+    imageUrl: 'img/zencrepes-queries.png',
+    description: (
+      <>
+        Everything is a query, filter down your results to the exact data you're
+        interested in. Edit the{' '}
+        <a
+          href='https://arranger.readthedocs.io/en/latest/src/sqon.html'
+          target='_blank'
+        >
+          SQON
+        </a>{' '}
+        query to customize your results even more.
       </>
     ),
   },
