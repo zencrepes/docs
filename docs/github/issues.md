@@ -52,6 +52,30 @@ For example, you can get the remaining issues by priority, by sprint...
   <img alt="Issues View" title="Issues view" src="/img/zencrepes-github-issues-deliver-remaining.png" width="480" />
 </p>
 
+## Network
+
+The network view displays a graph of the issues and PR corresponding to the current query.
+
+<p align="center">
+  <img alt="Issues View" title="Issues view" src="/img/zencrepes-github-issues-network.png" width="640" />
+</p>
+
+The default view is limited to 100 root nodes, and from there, ZenCrepes will walk down the tree to fetch all of the possible links (between issues, to PRs, ...), which can result in a pretty large amount of data nodes.
+
+Clicking on a node will allow you to use that particular node as a root node, but also to build a path.
+
+### Shortest path
+
+You might wonder how issue A and issue B relate to eachother although they're completely different ?
+
+ZenCrepes (thanks to Cytoscapes.js) allows you to visualize the shortest path between two nodes.
+
+<p align="center">
+  <img alt="Issues View" title="Issues view" src="/img/zencrepes-github-issues-network-path.png" width="640" />
+</p>
+
+You can then hover over the nodes in the path to discover more.
+
 ## List
 
 The list view is just a table view showing all items in the current query.

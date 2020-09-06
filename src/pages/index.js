@@ -67,6 +67,16 @@ const features = [
       </>
     ),
   },
+  {
+    title: <>Network map</>,
+    imageUrl: 'img/zencrepes-network.png',
+    description: (
+      <>
+        Map our relations between Pull Requests and Issues to visually discover
+        how things relate to each-other.
+      </>
+    ),
+  },
 ];
 
 function Feature({ imageUrl, title, description }) {

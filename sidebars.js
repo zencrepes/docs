@@ -7,7 +7,7 @@ module.exports = {
       'install/configuration',
       'install/authentication',
     ],
-    Use: ['use/overview'],
+    Use: ['use/overview', 'use/querying'],
     Datasets: [
       {
         GitHub: [
