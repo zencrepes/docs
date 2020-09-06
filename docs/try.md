@@ -10,7 +10,7 @@ This documentation has been tested on Mac, instructions should be identical on G
 
 ## Pre-requisites
 
-The following elements are needs to follow along this page:
+The following elements are needed to follow this page:
 
 - Docker and Docker-compose
 - A publicly reachable host (for the Webhook configuration)

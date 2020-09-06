@@ -9,7 +9,7 @@ sidebar_label: Features
 - Bulk data fetching
 - Query based (which can be edited / saved / opened), implements ([SQON](https://arranger.readthedocs.io/en/latest/src/sqon.html))
 - Facet based navigation
-- Most charts/elements are click-to-filter
+- Click-to-filter on most charts/elements
 - TSV Export
 - Support for Authentication/Authorization through Keycloak
 
@@ -25,6 +25,7 @@ sidebar_label: Features
 - Burndown
 - Team velocity
 - Completion forecast using moving average (1 week, 2 weeks, 4 weeks, 12 weeks)
+- Network/graph view (visualize links between issues & PRs)
 - List issues
 - Bulk add/remove label
 - Bulk transfer

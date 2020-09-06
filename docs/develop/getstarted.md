@@ -6,7 +6,7 @@ sidebar_label: Get Started
 
 This section of the document will contain a set of instructions to quickly spin-up the stack. Those instructions have been tested on MacOS and assume you already have common development tools installed (namely Docker, node, yarn).
 
-It will also focus primarily on GitHub for datasource.
+It will also focus primarily on GitHub for data fetching.
 
 ## Clone ZenCrepes repositories:
 
@@ -17,6 +17,7 @@ mkdir ~/zencrepes
 git clone https://github.com/zencrepes/zindexer.git
 git clone https://github.com/zencrepes/zui.git
 git clone https://github.com/zencrepes/zapi.git
+git clone https://github.com/zencrepes/zqueue.git
 ```
 
 ## Set-up Elasticsearch and Kibana
@@ -53,7 +54,7 @@ At this point, you should have a Kibana instance running, open-up your web brows
 
 ## Obtain a GitHub Token
 
-You'll need a GitHub developer token to fetch data with `zindexer`, follow [instructions on this page](http://docs.zencrepes.io/install/prerequisites) to get one (and keep it safe/secret).
+You'll need a GitHub developer token to fetch data with `zindexer`, follow [instructions on this page](https://docs.zencrepes.io/docs/try) to get one (and keep it safe/secret).
 
 ## Configure zindexer
 
@@ -240,23 +241,29 @@ Open a new terminal console/tab and start zapi:
 ```bash
 cd ~/zencrepes/zapo
 yarn
-yarn run start:dev
+===> With Keycloak:
+KEYCLOAK_DISABLED=false KEYCLOAK_ROLE=zencrepes-data yarn run start:dev
+===> Without Keycloak:
+KEYCLOAK_DISABLED=true yarn run start:dev
 ```
 
 ## Start zui
 
-Edit zui `.env` config file to disable keycloak (the authentication/authorization server).
-
-```bash
-vim ~/zencrepes/zui/.env
-```
-
-Replace `KEYCLOAK_DISABLED=false` with `KEYCLOAK_DISABLED=true`
-
-Save and start zui:
-
 ```bash
 cd ~/zencrepes/zui
+yarn
+===> With Keycloak:
+KEYCLOAK_DISABLED=false yarn run start:dev
+===> Without Keycloak:
+KEYCLOAK_DISABLED=true yarn run start:dev
+```
+
+## Start zqueue
+
+If you configured zqueue to receive events from GitHub (this is not mandatory), you can start it:
+
+```bash
+cd ~/zencrepes/zqueue
 yarn
 yarn run start:dev
 ```

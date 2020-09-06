@@ -30,7 +30,7 @@ You will also automatically see a list of the fields supported by default (techn
 
 ### Tag your custom filters
 
-ZenCrepes is going to process handle sightly differently filters you add through manually editing the query, versus the filters that are dynanically added when you're using facets.
+ZenCrepes is going to handle sightly differently filters you add through manually editing the query, versus the filters that are dynamically added when you're clicking on the UI.
 
 If you're editing a query and its content is too complex for ZenCrepes to understand, simply add a `tag` field to your filter, it will then be ignored by ZenCrepes facets.
 
@@ -55,7 +55,7 @@ If you're editing a query and its content is too complex for ZenCrepes to unders
 Although SQON supports 'not-in' to exclude results, this currently doesn't work on nested fields. You can easily spot nested field as they contain "edges" in their definition. But in general a nested field is a field that can take multiple values.
 For example: :
 
-- An issue can have multiple labels. labels is a nested field
+- An issue can have multiple labels, labels is a nested field
 - An issue can only have one repository, repository is not a nested field
 
 But you can still perform a NOT logic on a nested field. The sample query below search for all issues with labels `zui` OR `zapi` but NOT `bug`
@@ -87,4 +87,4 @@ But you can still perform a NOT logic on a nested field. The sample query below 
 }
 ```
 
-Note that ZenCrepes query display does handle such filters, and will display `Advanced Filter (edit to see)` instead of allowing you to dynamically remove values.
+Note that ZenCrepes query display does not handle such nested filters, and will display `Advanced Filter (edit to see)` instead of allowing you to dynamically remove values.
