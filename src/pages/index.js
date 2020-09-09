@@ -35,7 +35,7 @@ const features = [
     description: (
       <>
         Ensure labels and milestones are consistent across multiple
-        organizations and repositories, clean-up when necessary.
+        organizations and repositories, address issues in bulk.
       </>
     ),
   },
@@ -74,6 +74,26 @@ const features = [
       <>
         Map our relations between Pull Requests and Issues to visually discover
         how things relate to each-other.
+      </>
+    ),
+  },
+  {
+    title: <>Focus Heatmap</>,
+    imageUrl: 'img/zencrepes-focus.png',
+    description: (
+      <>
+        Find out which repositories, labels, milestones, projects (and more)
+        were the most active over the past weeks.
+      </>
+    ),
+  },
+  {
+    title: <>Repositories activity</>,
+    imageUrl: 'img/zencrepes-repo-activity.png',
+    description: (
+      <>
+        Find out how active your repositories are by looking at how frequently
+        code is pushed to master.
       </>
     ),
   },

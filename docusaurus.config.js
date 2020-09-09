@@ -1,3 +1,5 @@
+const allDocHomesPaths = ['/docs/'];
+
 module.exports = {
   title: 'ZenCrepes',
   tagline: 'Agile analytics and management made easy!',
@@ -6,6 +8,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'zencrepes', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
+  onBrokenLinks: 'ignore',
   themeConfig: {
     announcementBar: {
       id: 'supportus',
@@ -60,7 +63,8 @@ module.exports = {
         docs: {
           // It is recommended to set document id as docs home page (`docs/` path).
           // routeBasePath: '/docs/',
-          homePageId: 'introduction',
+          // homePageId: 'introduction',
+          path: 'docs/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl: 'https://github.com/zencrepes/docs/tree/master/docs',

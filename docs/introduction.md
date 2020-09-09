@@ -2,6 +2,7 @@
 id: introduction
 title: What is ZenCrepes ?
 sidebar_label: Introduction
+slug: /
 ---
 
 <h1 align="center">

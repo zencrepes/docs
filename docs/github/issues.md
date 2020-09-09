@@ -4,13 +4,13 @@ title: GitHub Issues
 sidebar_label: Issues
 ---
 
-<p align="center">
-  <img alt="Issues View" title="Issues view" src="/img/zencrepes-github-issues.png" width="640" />
-</p>
-
 ## Explore
 
 The objective of this tab is to be able to quickly identify patterns and potential things to address. It provides quick metrics to answers questions such as "Is everything alright ? ".
+
+<p align="center">
+  <img alt="Issues View" title="Issues view" src="/img/zencrepes-github-issues.png" width="640" />
+</p>
 
 ## Analyze
 

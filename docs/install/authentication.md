@@ -16,8 +16,12 @@ Although this section of the documentation will present instructions on how to g
 
 Start by deploying Keycloak (in a Docker container for example).
 
+:::caution
+There is a strong dependency between the version of your Keycloak server and the version of `keycloak-js` used by ZUI, if you are facing errors, check that your server version and the version listed in [zui's package.json](https://github.com/zencrepes/zui/blob/master/package.json) do match.
+:::
+
 ```bash
-docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:latest
+docker run -p 8080:8080 -e KEYCLOAK_USER=admin -e KEYCLOAK_PASSWORD=admin quay.io/keycloak/keycloak:11.0.2
 ```
 
 Once done, log into the administration panel: http://localhost:8080/auth/admin
@@ -27,6 +31,20 @@ Once done, log into the administration panel: http://localhost:8080/auth/admin
 From there, mouse-over "Master" (the default Realm) and click on "Add realm" and give it the name `ZenCrepes`.
 
 ![](/img/keycloak-create-realm-menu.png)
+
+### Realm Settings
+
+To allow connections towards the Realm, you need to configure it to allow connections coming from your application, to do so, click on "Realm Settings" > "Security Defenses" and in the "Headers" section, ensure `Content-Security-Policy` contains your ZUI's domain (dev or production).
+
+```
+frame-src 'self'; frame-ancestors 'self' http://localhost:3000; object-src 'none';
+```
+
+If not configured you would see the following error:
+
+```
+Refused to frame 'http://localhost:8080/' because an ancestor violates the following Content Security Policy directive: "frame-ancestors 'self'".
+```
 
 ### Create a Client
 
