@@ -9,6 +9,8 @@ module.exports = {
   organizationName: 'zencrepes', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   onBrokenLinks: 'ignore',
+  plugins: ['@docusaurus/plugin-google-analytics'],
+
   themeConfig: {
     announcementBar: {
       id: 'supportus',
@@ -54,6 +56,9 @@ module.exports = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} ZenCrepes. Site built with Docusaurus.`,
+    },
+    googleAnalytics: {
+      trackingID: 'UA-1488177-27',
     },
   },
   presets: [
