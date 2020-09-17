@@ -65,6 +65,6 @@ ZenCrepes is not a ticketing management system (and will never be), it's a set o
 
 ## Reach-out
 
-I'd be happy to hear feedback and receive external contributions, just submit a PR with your requested changes. Feel free to reach out on [slack](http://slack.overture.bio/), ZenCrepes has a dedicated channel on `#app_zencrepes`.
+Feel free to reach out on [slack](http://slack.overture.bio/), ZenCrepes has a dedicated channel on `#app_zencrepes`.
 
 Overture gracefully provides the VM instance hosting dev & prod and the slack channel. ZenCrepes is not an Overture project.
