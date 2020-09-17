@@ -7,7 +7,7 @@ sidebar_label: Features
 ## Platform
 
 - Bulk data fetching
-- Query based (which can be edited / saved / opened), implements ([SQON](https://arranger.readthedocs.io/en/latest/src/sqon.html))
+- Query-based (which can be edited / saved / opened), implements [SQON](https://arranger.readthedocs.io/en/latest/src/sqon.html)
 - Facet based navigation
 - Click-to-filter on most charts/elements
 - TSV Export
