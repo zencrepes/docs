@@ -9,7 +9,7 @@ module.exports = {
   organizationName: 'zencrepes', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   onBrokenLinks: 'ignore',
-  plugins: ['@docusaurus/plugin-google-analytics'],
+  // plugins: ['@docusaurus/plugin-google-analytics'],
 
   themeConfig: {
     announcementBar: {
