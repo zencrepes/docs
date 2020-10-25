@@ -32,6 +32,7 @@ module.exports = {
         ],
       },
       { Jira: ['jira/issues'] },
+      { Tests: ['tests/states'] },
     ],
 
     Develop: ['develop/getstarted'],
