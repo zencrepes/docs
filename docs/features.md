@@ -114,11 +114,18 @@ sidebar_label: Features
 - Triggered pipelines per week
 - List pipelines
 
-## Jira
+## Atlassian
 
-### Issues
+### Jira Issues
 
 - Closed/created issues per week
 - List issues
 - Fetch remote links
 - Export issues for GitHub import
+- Matrix of closed issue per week and by project, reporter, asisgnee, ...
+
+### Bamboo Runs
+
+- Total number of tests executed per week
+- Failure rate per week
+- Failure rate per plan over the last 12 days (daily), 12 weeks (weekly) and 12 months (monthly)

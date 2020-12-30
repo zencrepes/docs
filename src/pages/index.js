@@ -142,7 +142,7 @@ function Home() {
       <main>
         <div className={clsx(styles.announcement, styles.announcementDark)}>
           <div className={styles.announcementInner}>
-            ZenCrepes fetches content GitHub, CircleCI, Jira and provides a
+            ZenCrepes fetches content GitHub, CircleCI, the Atlassian suite and provides a
             high-level analytics platform across all of your team's data.
           </div>
         </div>

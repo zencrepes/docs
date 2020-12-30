@@ -31,7 +31,7 @@ module.exports = {
           'circleci/insights',
         ],
       },
-      { Jira: ['jira/issues'] },
+      { Atlassian: ['atlassian/issues', 'atlassian/bambooruns'] },
       { Tests: ['tests/states'] },
     ],
 

@@ -35,19 +35,21 @@ A [section of this documentation](http://docs.zencrepes.io/serverless/) is dedic
 
 ZenCrepes currently supports the following datasets.
 
-| GitHub                | Circle CI             | Jira   |
-| --------------------- | --------------------- | ------ |
-| Issues                | Pipelines             | Issues |
-| Pull Requests         | Insights              |        |
-| Repositories          | Environment Variables |        |
-| Vulnerabilities       |                       |        |
-| Watchers & Stargazers |                       |        |
-| Releases              |                       |        |
-| Milestones            |                       |        |
-| Projects              |                       |        |
-| Labels                |                       |        |
+| GitHub                | Circle CI             | Atlassian   | Testing (custom)\* |
+| --------------------- | --------------------- | ----------- | ------------------ |
+| Issues                | Pipelines             | Jira Issues | States             |
+| Pull Requests         | Insights              | Bamboo Runs |                    |
+| Repositories          | Environment Variables |             |                    |
+| Vulnerabilities       |                       |             |                    |
+| Watchers & Stargazers |                       |             |                    |
+| Releases              |                       |             |                    |
+| Milestones            |                       |             |                    |
+| Projects              |                       |             |                    |
+| Labels                |                       |             |                    |
 
 Adding more data sources is pretty straightforward as long as an API is available to fetch the data in bulk. So reach-out (or submit a PR) is you want to see more data sources added.
+
+\* Testing is a custom dataset aimed at recording testing states and testing runs sent to one of zqueue's webhook. Basically after each execution of a test suite, the corresponding metrics (successful tests, failed tests) are recorded within ZenCrepes for further analysis.
 
 ## Inner-workings
 
