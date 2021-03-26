@@ -15,6 +15,7 @@ module.exports = {
           'github/issues',
           'github/repositories',
           'github/labels',
+          'github/mavenpoms',
           'github/milestones',
           'github/projects',
           'github/prs',

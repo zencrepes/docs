@@ -46,6 +46,7 @@ ZenCrepes currently supports the following datasets.
 | Milestones            |                       |        |
 | Projects              |                       |        |
 | Labels                |                       |        |
+| Maven pom.xml         |                       |        |
 
 Adding more data sources is pretty straightforward as long as an API is available to fetch the data in bulk. So reach-out (or submit a PR) is you want to see more data sources added.
 

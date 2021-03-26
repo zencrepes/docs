@@ -60,6 +60,10 @@ sidebar_label: Features
 - Releases created by week
 - List milestones
 
+### Maven POM
+
+- Parse pom.xml files located at the root of the repository to extract artifactId, name, version, description and its parent (artifactId, version)
+
 ### Repositories
 
 - Repositories created by week
