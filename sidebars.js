@@ -32,7 +32,7 @@ module.exports = {
         ],
       },
       { Atlassian: ['atlassian/issues', 'atlassian/bambooruns'] },
-      { Tests: ['tests/states'] },
+      { Tests: ['tests/states', 'tests/perfs'] },
     ],
 
     Develop: ['develop/getstarted'],
