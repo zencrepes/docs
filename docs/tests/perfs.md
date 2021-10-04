@@ -33,10 +33,19 @@ The payload for a testing perf event is as follow:
       "tenant": "zencrepes",
       "region": "us-east-2"
   },
+  // The various resources used to run the tests
+  "resources": [{
+      "name": "elasticsearch",
+      "size": "t2.medium",
+      "image": "docker.elastic.co/elasticsearch/elasticsearch:7.10.2"
+  }, {
+      "name": "jmeter",
+      "size": "t2.medium",
+      "image": "zencrepes/zencrepes-perf:latest"
+  }],
   // An array of runs 
   "runs": [{
       "name": "200 Users - RampUp 30",
-      "rampUp": 30,
       "userCount": 200,
       // Direct output (as-is) of the statistics.json file generated
       // by JMeter. Note that a "Total" transaction is needed
