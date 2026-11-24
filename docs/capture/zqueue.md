@@ -26,7 +26,7 @@ The GitHub delivery GUID is the document id. A redelivered event overwrites its 
 
 ## Configuration
 
-zqueue reads one YAML file: `~/.config/zindexer/config.yml`. The location changes with the `CONFIG_PATH` environment variable. The file is shared with [zindexer](https://github.com/zencrepes/zindexer), and zqueue fills every key it does not find with a default:
+zqueue reads one YAML file: `~/.config/zencrepes/config.yml`. The location changes with the `CONFIG_PATH` environment variable, and zqueue fills every key it does not find with a default. When no file exists, zqueue creates one with the defaults on its first start, reports that it did, and stops: edit the file, then start zqueue again.
 
 ```yaml
 elasticsearch:
