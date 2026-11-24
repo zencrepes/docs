@@ -1,33 +1,42 @@
-# Website
+# ZenCrepes documentation
 
-This website is built using [Docusaurus 2](https://v2.docusaurus.io/), a modern static website generator.
+This website is built with [Docusaurus](https://docusaurus.io/). It serves the documentation of ZenCrepes at [docs.zencrepes.io](https://docs.zencrepes.io).
 
-### Installation
+## Versions
 
-```
-$ yarn
-```
+The site serves two documentation versions from one deployment:
 
-### Local Development
+- **2.x** (the default, in `docs/`): the version under active development.
+- **1.x** (in `versioned_docs/version-1.x/`): the previous generation, served under `/docs/1.x/`.
 
-```
-$ yarn start
-```
+The navbar version dropdown switches between them. Edit `docs/` for v2 content, and `versioned_docs/version-1.x/` for v1 content.
 
-This command starts a local development server and open up a browser window. Most changes are reflected live without having to restart the server.
+## Installation
 
-### Build
-
-```
-$ yarn build
+```bash
+npm install
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Local development
 
-### Deployment
-
-```
-$ GIT_USER=<Your GitHub username> USE_SSH=true yarn deploy
+```bash
+npm start
 ```
 
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+This command starts a local development server. Most changes are reflected live, without a restart of the server.
+
+## Build
+
+```bash
+npm run build
+```
+
+This command generates the static site into the `build` directory. The build fails on a broken internal link.
+
+## Deployment
+
+A push to `master` deploys the site to GitHub Pages through the `documentation` workflow. For a manual deployment:
+
+```bash
+GIT_USER=<Your GitHub username> USE_SSH=true npm run deploy
+```

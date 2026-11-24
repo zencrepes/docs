@@ -1,40 +1,26 @@
-module.exports = {
-  someSidebar: {
-    'Getting Started': ['introduction', 'features', 'try', 'faq'],
-    Serverless: ['serverless'],
-    Install: [
-      'install/architecture',
-      'install/configuration',
-      'install/authentication',
-    ],
-    Use: ['use/overview', 'use/querying'],
-    Datasets: [
-      {
-        GitHub: [
-          'github/overview',
-          'github/issues',
-          'github/repositories',
-          'github/labels',
-          'github/mavenpoms',
-          'github/milestones',
-          'github/projects',
-          'github/prs',
-          'github/releases',
-          'github/vulnerabilities',
-          'github/watchers',
-          'github/import',
-        ],
-      },
-      {
-        CircleCI: [
-          'circleci/envvars',
-          'circleci/pipelines',
-          'circleci/insights',
-        ],
-      },
-      { Jira: ['jira/issues'] },
-    ],
+// @ts-check
 
-    Develop: ['develop/getstarted'],
-  },
+// Sidebar of the current version (v2). The 1.x sidebar lives in
+// versioned_sidebars/version-1.x-sidebars.json.
+
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+const sidebars = {
+  someSidebar: [
+    'introduction',
+    'architecture',
+    {
+      type: 'category',
+      label: 'Capture data',
+      collapsed: false,
+      items: [
+        'capture/quickstart',
+        'capture/zqueue',
+        'capture/opensearch',
+        'capture/dashboards',
+      ],
+    },
+    'roadmap',
+  ],
 };
+
+export default sidebars;

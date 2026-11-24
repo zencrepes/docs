@@ -132,9 +132,9 @@ docker exec -it zc_zindexer zindexer sources --help
 
 This gives view a quick view at the available commands, which ultimately define what data will be fetched.
 
-<Note type="tip">
+:::tip
 Yes, there needs to be two `zindexer` in the command above, the first one is the docker container name, while the second one is the command to run within that container.
-</Note>
+:::
 
 To get started quickly, with as much data as possible, run the following command:
 
