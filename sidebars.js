@@ -1,71 +1,25 @@
 // @ts-check
 
+// Sidebar of the current version (v2). The 1.x sidebar lives in
+// versioned_sidebars/version-1.x-sidebars.json.
+
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   someSidebar: [
+    'introduction',
+    'architecture',
     {
       type: 'category',
-      label: 'Getting Started',
-      items: ['introduction', 'features', 'try', 'faq'],
-    },
-    {
-      type: 'category',
-      label: 'Serverless',
-      items: ['serverless'],
-    },
-    {
-      type: 'category',
-      label: 'Install',
+      label: 'Capture data',
+      collapsed: false,
       items: [
-        'install/architecture',
-        'install/configuration',
-        'install/authentication',
+        'capture/quickstart',
+        'capture/zqueue',
+        'capture/opensearch',
+        'capture/dashboards',
       ],
     },
-    {
-      type: 'category',
-      label: 'Use',
-      items: ['use/overview', 'use/querying'],
-    },
-    {
-      type: 'category',
-      label: 'Datasets',
-      items: [
-        {
-          type: 'category',
-          label: 'GitHub',
-          items: [
-            'github/overview',
-            'github/issues',
-            'github/repositories',
-            'github/labels',
-            'github/mavenpoms',
-            'github/milestones',
-            'github/projects',
-            'github/prs',
-            'github/releases',
-            'github/vulnerabilities',
-            'github/watchers',
-            'github/import',
-          ],
-        },
-        {
-          type: 'category',
-          label: 'CircleCI',
-          items: ['circleci/envvars', 'circleci/pipelines', 'circleci/insights'],
-        },
-        {
-          type: 'category',
-          label: 'Jira',
-          items: ['jira/issues'],
-        },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Develop',
-      items: ['develop/getstarted'],
-    },
+    'roadmap',
   ],
 };
 
