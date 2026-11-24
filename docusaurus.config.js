@@ -11,7 +11,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'zencrepes',
   projectName: 'docs',
-  onBrokenLinks: 'warn',
+  onBrokenLinks: 'throw',
 
   markdown: {
     hooks: {
@@ -32,6 +32,21 @@ const config = {
           path: 'docs/',
           sidebarPath: './sidebars.js',
           editUrl: 'https://github.com/zencrepes/docs/tree/master/',
+          // v2 (the work in progress) is the default version, served at
+          // /docs/. v1 stays browsable at /docs/1.x/ through the navbar
+          // version dropdown — same site, same deployment.
+          lastVersion: 'current',
+          versions: {
+            current: {
+              label: '2.x',
+              path: '',
+            },
+            '1.x': {
+              label: '1.x',
+              path: '1.x',
+              banner: 'none',
+            },
+          },
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -60,6 +75,10 @@ const config = {
             activeBasePath: 'docs',
             label: 'Docs',
             position: 'left',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
           },
           {
             href: 'https://github.com/zencrepes',

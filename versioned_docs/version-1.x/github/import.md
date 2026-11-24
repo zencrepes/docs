@@ -37,11 +37,11 @@ The whole export & import process is divided in five sequential phases:
 
 ## Configure ZenCrepes
 
-Please refer to the section of the [documentation refering to installation](/docs/install/configuration), configuration is the exact same.
+Please refer to the section of the [documentation refering to installation](../install/configuration.md), configuration is the exact same.
 
 ## Import Data from Jira
 
-First start by importing all of the issues from Jira, this is the exact same action than when using [Jira issues directly in ZenCrepes](/docs/jira/issues).
+First start by importing all of the issues from Jira, this is the exact same action than when using [Jira issues directly in ZenCrepes](../jira/issues.md).
 
 You can do that by running:
 
