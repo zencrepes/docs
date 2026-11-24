@@ -1,40 +1,72 @@
-module.exports = {
-  someSidebar: {
-    'Getting Started': ['introduction', 'features', 'try', 'faq'],
-    Serverless: ['serverless'],
-    Install: [
-      'install/architecture',
-      'install/configuration',
-      'install/authentication',
-    ],
-    Use: ['use/overview', 'use/querying'],
-    Datasets: [
-      {
-        GitHub: [
-          'github/overview',
-          'github/issues',
-          'github/repositories',
-          'github/labels',
-          'github/mavenpoms',
-          'github/milestones',
-          'github/projects',
-          'github/prs',
-          'github/releases',
-          'github/vulnerabilities',
-          'github/watchers',
-          'github/import',
-        ],
-      },
-      {
-        CircleCI: [
-          'circleci/envvars',
-          'circleci/pipelines',
-          'circleci/insights',
-        ],
-      },
-      { Jira: ['jira/issues'] },
-    ],
+// @ts-check
 
-    Develop: ['develop/getstarted'],
-  },
+/** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
+const sidebars = {
+  someSidebar: [
+    {
+      type: 'category',
+      label: 'Getting Started',
+      items: ['introduction', 'features', 'try', 'faq'],
+    },
+    {
+      type: 'category',
+      label: 'Serverless',
+      items: ['serverless'],
+    },
+    {
+      type: 'category',
+      label: 'Install',
+      items: [
+        'install/architecture',
+        'install/configuration',
+        'install/authentication',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Use',
+      items: ['use/overview', 'use/querying'],
+    },
+    {
+      type: 'category',
+      label: 'Datasets',
+      items: [
+        {
+          type: 'category',
+          label: 'GitHub',
+          items: [
+            'github/overview',
+            'github/issues',
+            'github/repositories',
+            'github/labels',
+            'github/mavenpoms',
+            'github/milestones',
+            'github/projects',
+            'github/prs',
+            'github/releases',
+            'github/vulnerabilities',
+            'github/watchers',
+            'github/import',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'CircleCI',
+          items: ['circleci/envvars', 'circleci/pipelines', 'circleci/insights'],
+        },
+        {
+          type: 'category',
+          label: 'Jira',
+          items: ['jira/issues'],
+        },
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Develop',
+      items: ['develop/getstarted'],
+    },
+  ],
 };
+
+export default sidebars;

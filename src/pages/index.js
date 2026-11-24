@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -55,11 +54,12 @@ const features = [
     imageUrl: 'img/zencrepes-queries.png',
     description: (
       <>
-        Everything is a query, filter down your results to the exact data you're
-        interested in. Edit the{' '}
+        Everything is a query, filter down your results to the exact data
+        you're interested in. Edit the{' '}
         <a
           href='https://arranger.readthedocs.io/en/latest/src/sqon.html'
           target='_blank'
+          rel='noopener noreferrer'
         >
           SQON
         </a>{' '}
@@ -102,10 +102,10 @@ const features = [
 function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={classnames('col col--4', styles.feature)}>
+    <div className={clsx('col col--4', styles.feature)}>
       {imgUrl && (
         <div className='text--center'>
-          <img src={imgUrl} alt={title} />
+          <img src={imgUrl} alt='' />
         </div>
       )}
       <h3>{title}</h3>
@@ -122,13 +122,13 @@ function Home() {
       title={`${siteConfig.title}`}
       description='Agile analytics and management across GitHub organizations & repositories made easy!'
     >
-      <header className={classnames('hero hero--primary', styles.heroBanner)}>
+      <header className={clsx('hero hero--primary', styles.heroBanner)}>
         <div className='container'>
           <h1 className='hero__title'>{siteConfig.title}</h1>
           <p className='hero__subtitle'>{siteConfig.tagline}</p>
           <div className={styles.buttons}>
             <Link
-              className={classnames(
+              className={clsx(
                 'button button--outline button--secondary button--lg',
                 styles.getStarted
               )}
