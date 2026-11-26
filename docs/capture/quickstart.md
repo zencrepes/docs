@@ -6,6 +6,10 @@ sidebar_label: Quickstart
 
 This guide takes you from a blank machine to GitHub events recorded in OpenSearch, with Docker. Every step ends with a check, so you know where you stand before you move on. Plan around 15 minutes.
 
+:::note Example credentials
+Every password and secret in this guide is a working example, so each command runs as pasted. Replace the values with your own for an instance that outlives the walkthrough.
+:::
+
 You will start 4 services from one compose file:
 
 - **zqueue**, the webhook listener, on port 3003.
@@ -31,10 +35,10 @@ The [`deploy/`](https://github.com/zencrepes/zqueue/tree/main/deploy) folder con
 
 ## Step 2 — Start the stack
 
-Pick a strong admin password for OpenSearch. The first boot requires at least 8 characters, with upper case, lower case, a digit and a special character:
+The admin password of OpenSearch needs at least 8 characters, with upper case, lower case, a digit and a special character. This guide uses `ZenCrepes-Adm1n!`:
 
 ```bash
-export OPENSEARCH_INITIAL_ADMIN_PASSWORD='<a strong admin password>'
+export OPENSEARCH_INITIAL_ADMIN_PASSWORD='ZenCrepes-Adm1n!'
 docker compose up -d
 ```
 
@@ -67,12 +71,12 @@ docker compose exec opensearch curl -sk -u "$ADMIN" -X PUT https://localhost:920
 }'
 ```
 
-Then the user. Pick a strong password, and keep it for step 4. OpenSearch rejects a password that is too weak or too similar to the user name:
+Then the user. Its password returns in step 4, and this guide uses `Ev3nts-Recorder!`. OpenSearch rejects a password that is too weak or too similar to the user name:
 
 ```bash
 docker compose exec opensearch curl -sk -u "$ADMIN" -X PUT https://localhost:9200/_plugins/_security/api/internalusers/zqueue \
   -H 'content-type: application/json' -d '{
-  "password": "<the zqueue password>"
+  "password": "Ev3nts-Recorder!"
 }'
 ```
 
@@ -88,19 +92,19 @@ docker compose exec opensearch curl -sk -u "$ADMIN" -X PUT https://localhost:920
 **Check**: the new credentials answer the health call:
 
 ```bash
-docker compose exec opensearch curl -sk -u 'zqueue:<the zqueue password>' https://localhost:9200/_cluster/health
+docker compose exec opensearch curl -sk -u 'zqueue:Ev3nts-Recorder!' https://localhost:9200/_cluster/health
 ```
 
 ## Step 4 — Configure zqueue
 
-Edit `config/config.yml`. Set the zqueue password from step 3, and generate strong random values for the 2 webhook secrets, for example with `openssl rand -hex 32`:
+Edit `config/config.yml`. The password is the one of step 3. The 2 webhook secrets are random values: the examples below came from `openssl rand -hex 32`, and that command generates your own.
 
 ```yaml
 elasticsearch:
   engine: opensearch
   host: https://opensearch:9200
   username: zqueue
-  password: <the zqueue password>
+  password: Ev3nts-Recorder!
   # The demo certificates are self-signed
   sslVerify: false
 redis:
@@ -108,10 +112,10 @@ redis:
 github:
   webhook:
     # The same value goes into the GitHub webhook form in step 6
-    secret: <a strong random value>
+    secret: 9f2a1c6d8e4b35a7c0d1f6b28e9a47d3c5f08b6a1d2e94c7b3a650d8f1c42e7b
 testing:
   webhook:
-    secret: <a strong random value>
+    secret: 4d7e2b90c1f8a35d6e4a92c7b0d5f18e3a6c49b2d7f05e8a1b3c62d94f07a5c3
 ```
 
 Then restart zqueue:
@@ -131,7 +135,8 @@ docker compose logs zqueue | tail -20
 Before GitHub enters the picture, prove the pipeline end to end from your machine. Sign a small payload with the webhook secret and post it:
 
 ```bash
-SECRET='<the github webhook secret from step 4>'
+# The github webhook secret of step 4
+SECRET='9f2a1c6d8e4b35a7c0d1f6b28e9a47d3c5f08b6a1d2e94c7b3a650d8f1c42e7b'
 BODY='{"action":"opened","issue":{"number":1}}'
 SIG="sha256=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "$SECRET" | awk '{print $NF}')"
 curl -X POST http://localhost:3003/github/webhook \
