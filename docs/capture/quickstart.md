@@ -6,10 +6,6 @@ sidebar_label: Quickstart
 
 This guide takes you from a blank machine to GitHub events recorded in OpenSearch, with Docker. Every step ends with a check, so you know where you stand before you move on. Plan around 15 minutes.
 
-:::note Example credentials
-Every password and secret in this guide is a working example, so each command runs as pasted. Replace the values with your own for an instance that outlives the walkthrough.
-:::
-
 You will start 4 services from one compose file:
 
 - **zqueue**, the webhook listener, on port 3003.
@@ -23,22 +19,38 @@ You will start 4 services from one compose file:
 - Admin access to the GitHub organization or repository you want to record events from.
 - For step 6 only: a host that GitHub can reach over HTTPS. Steps 1 to 5 run on your machine.
 
+## Set your credentials
+
+The commands of this guide read every password and secret from 4 shell variables. The values below are working examples, so each command runs as pasted. To use your own values, change them here, and nowhere else:
+
+```bash
+# At least 8 characters, with upper case, lower case, a digit and a special character
+export OPENSEARCH_INITIAL_ADMIN_PASSWORD='ZenCrepes-Adm1n!'
+# The password of the OpenSearch user that zqueue writes as
+export ZQUEUE_PASSWORD='Ev3nts-Recorder!'
+# The webhook secrets, generated for example with: openssl rand -hex 32
+export GITHUB_WEBHOOK_SECRET='9f2a1c6d8e4b35a7c0d1f6b28e9a47d3c5f08b6a1d2e94c7b3a650d8f1c42e7b'
+export TESTING_WEBHOOK_SECRET='4d7e2b90c1f8a35d6e4a92c7b0d5f18e3a6c49b2d7f05e8a1b3c62d94f07a5c3'
+```
+
+:::note
+The variables live in your terminal. Export them again in every new terminal you use for this guide.
+:::
+
 ## Step 1 — Get the stack
 
 ```bash
 git clone https://github.com/zencrepes/zqueue.git
 cd zqueue/deploy
-cp config/config.yml.example config/config.yml
 ```
 
 The [`deploy/`](https://github.com/zencrepes/zqueue/tree/main/deploy) folder contains the compose file and a `config/` folder. The `config/` folder is mounted into the zqueue container, at `/root/.config/zencrepes`.
 
 ## Step 2 — Start the stack
 
-The admin password of OpenSearch needs at least 8 characters, with upper case, lower case, a digit and a special character. This guide uses `ZenCrepes-Adm1n!`:
+OpenSearch reads the admin password from `OPENSEARCH_INITIAL_ADMIN_PASSWORD`, exported in [Set your credentials](#set-your-credentials):
 
 ```bash
-export OPENSEARCH_INITIAL_ADMIN_PASSWORD='ZenCrepes-Adm1n!'
 docker compose up -d
 ```
 
@@ -71,13 +83,13 @@ docker compose exec opensearch curl -sk -u "$ADMIN" -X PUT https://localhost:920
 }'
 ```
 
-Then the user. Its password returns in step 4, and this guide uses `Ev3nts-Recorder!`. OpenSearch rejects a password that is too weak or too similar to the user name:
+Then the user. Its password comes from `ZQUEUE_PASSWORD`, and OpenSearch rejects a password that is too weak or too similar to the user name:
 
 ```bash
 docker compose exec opensearch curl -sk -u "$ADMIN" -X PUT https://localhost:9200/_plugins/_security/api/internalusers/zqueue \
-  -H 'content-type: application/json' -d '{
-  "password": "Ev3nts-Recorder!"
-}'
+  -H 'content-type: application/json' -d "{
+  \"password\": \"$ZQUEUE_PASSWORD\"
+}"
 ```
 
 Then map the user to the role:
@@ -92,19 +104,20 @@ docker compose exec opensearch curl -sk -u "$ADMIN" -X PUT https://localhost:920
 **Check**: the new credentials answer the health call:
 
 ```bash
-docker compose exec opensearch curl -sk -u 'zqueue:Ev3nts-Recorder!' https://localhost:9200/_cluster/health
+docker compose exec opensearch curl -sk -u "zqueue:$ZQUEUE_PASSWORD" https://localhost:9200/_cluster/health
 ```
 
 ## Step 4 — Configure zqueue
 
-Edit `config/config.yml`. The password is the one of step 3. The 2 webhook secrets are random values: the examples below came from `openssl rand -hex 32`, and that command generates your own.
+Write `config/config.yml` from the variables. The shell expands them, so the file receives the literal values:
 
-```yaml
+```bash
+cat > config/config.yml <<EOF
 elasticsearch:
   engine: opensearch
   host: https://opensearch:9200
   username: zqueue
-  password: Ev3nts-Recorder!
+  password: $ZQUEUE_PASSWORD
   # The demo certificates are self-signed
   sslVerify: false
 redis:
@@ -112,11 +125,14 @@ redis:
 github:
   webhook:
     # The same value goes into the GitHub webhook form in step 6
-    secret: 9f2a1c6d8e4b35a7c0d1f6b28e9a47d3c5f08b6a1d2e94c7b3a650d8f1c42e7b
+    secret: $GITHUB_WEBHOOK_SECRET
 testing:
   webhook:
-    secret: 4d7e2b90c1f8a35d6e4a92c7b0d5f18e3a6c49b2d7f05e8a1b3c62d94f07a5c3
+    secret: $TESTING_WEBHOOK_SECRET
+EOF
 ```
+
+The [config.yml.example](https://github.com/zencrepes/zqueue/blob/main/deploy/config/config.yml.example) file lists every available key, such as the event filters.
 
 Then restart zqueue:
 
@@ -135,10 +151,8 @@ docker compose logs zqueue | tail -20
 Before GitHub enters the picture, prove the pipeline end to end from your machine. Sign a small payload with the webhook secret and post it:
 
 ```bash
-# The github webhook secret of step 4
-SECRET='9f2a1c6d8e4b35a7c0d1f6b28e9a47d3c5f08b6a1d2e94c7b3a650d8f1c42e7b'
 BODY='{"action":"opened","issue":{"number":1}}'
-SIG="sha256=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "$SECRET" | awk '{print $NF}')"
+SIG="sha256=$(printf '%s' "$BODY" | openssl dgst -sha256 -hmac "$GITHUB_WEBHOOK_SECRET" | awk '{print $NF}')"
 curl -X POST http://localhost:3003/github/webhook \
   -H 'content-type: application/json' \
   -H 'x-github-event: issues' \
@@ -164,7 +178,7 @@ In the GitHub organization, or in a single repository: **Settings → Webhooks �
 
 - **Payload URL**: `https://<your host>/github/webhook`
 - **Content type**: `application/json`. This value is required, because zqueue verifies the signature over the raw JSON body.
-- **Secret**: the value of `github.webhook.secret` in `config.yml`
+- **Secret**: the value of `GITHUB_WEBHOOK_SECRET`, which step 4 wrote into `config.yml`
 - **Events**: "Send me everything" records all events, and zqueue stores each type in its own index. To drop types you do not want, list them in `github.webhook.excludeGithubEvents`.
 
 **Check**: GitHub sends a `ping` event on creation. Under **Recent Deliveries**, the delivery shows a `202`, and the index list now holds `gh_events_ping`:
